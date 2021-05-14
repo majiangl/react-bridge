@@ -5,22 +5,24 @@ import ReactDOM from 'react-dom';
 const registry = {};
 const NAME = Symbol("name");
 
-function _createBridgeWrapper(render) {
-    return function Bridge(props, container) {
-        ReactDOM.render(render(props), container);
+function _createBridge(render) {
+    function renderComponent(props, container, callback) {
+        ReactDOM.render(render(props), container, callback);
         return {
             destroy: function () {
                 ReactDOM.unmountComponentAtNode(container);
             }
         }
     };
+    renderComponent[NAME] = name;
+    return renderComponent;
 }
 
 /**
  * Wrap a react functional component as a bridge, so that react components can be rendered in non-react environments.
  *
- * @param name      {string}                                - unique name of bridge component
- * @param render    {function(Object): React.ReactElement}  - React functional component
+ * @param name      {string}                                - unique bridge name
+ * @param render    {function(Object): React.ReactElement}  - render function which is basically a functional component
  * @returns {function(Object, Node): {destroy: function(): void}}
  */
 function createBridge(name, render) {
@@ -30,8 +32,7 @@ function createBridge(name, render) {
     if (!_.isFunction(render)) {
         throw new Error(`The render parameter should be a function.`);
     }
-    const bridge = _createBridgeWrapper(render);
-    bridge[NAME] = name;
+    const bridge = _createBridge(render);
     registry[name] = bridge;
     return bridge;
 }
