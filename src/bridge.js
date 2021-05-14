@@ -60,11 +60,12 @@ const bridgeAPIs = {
      * @param name      {string}    - bridge name
      * @param props     {Object}    - properties to render bridge
      * @param container {Node}      - container DOM Node
+     * @param callback  {Function}  - called after the component is rendered
      * @returns {function(Object, Node): {destroy: function(): void}}
      */
-    render(name, props, container) {
+    render(name, props, container, callback) {
         const bridge = this.getBridge(name);
-        return bridge(props, container);
+        return bridge(props, container, callback);
     }
 };
 _.set(self, BRIDGE_API_NAMESPACE, bridgeAPIs);
