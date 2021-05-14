@@ -1,25 +1,13 @@
 const path = require("path");
-const glob = require("glob");
 const webpack = require("webpack");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-
-function getDefaultEntry() {
-    let entry = {};
-    let allFiles = glob.sync("src/bridges/*.js");
-
-    allFiles.forEach(function (file) {
-        let chunk = file.slice(12, -3);
-        entry[chunk] = path.resolve(__dirname, file);
-    });
-
-    return entry;
-}
+const config = require('./config');
 
 module.exports = {
-    entry: getDefaultEntry(),
+    entry: config.bundles,
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "js/[name]_[chunkhash].js"
+        filename: "js/[name].js"
     },
     module: {
         rules: [{
@@ -38,7 +26,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
-            "GLOBAL_NAMESPACE": JSON.stringify("reactBridge")
+            "BRIDGE_API_NAMESPACE": JSON.stringify(config.bridgeAPINamespace)
         })
     ],
     resolve: {

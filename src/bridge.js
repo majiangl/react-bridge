@@ -19,8 +19,8 @@ function _createBridgeWrapper(render) {
 /**
  * Wrap a react functional component as a bridge, so that react components can be rendered in non-react environments.
  *
- * @param name {string} - unique name of bridge component
- * @param render {function(Object): React.ReactElement} - React functional component
+ * @param name      {string}                                - unique name of bridge component
+ * @param render    {function(Object): React.ReactElement}  - React functional component
  * @returns {function(Object, Node): {destroy: function(): void}}
  */
 function createBridge(name, render) {
@@ -61,11 +61,11 @@ const bridgeAPIs = {
      * @param container {Node}      - container DOM Node
      * @returns {function(Object, Node): {destroy: function(): void}}
      */
-    renderBridge(name, props, container) {
+    render(name, props, container) {
         const bridge = this.getBridge(name);
         return bridge(props, container);
     }
 };
-_.set(self, GLOBAL_NAMESPACE, bridgeAPIs);
+_.set(self, BRIDGE_API_NAMESPACE, bridgeAPIs);
 
 export {createBridge};

@@ -5,13 +5,13 @@
     <title>Test Page</title>
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
-            reactBridge.renderBridge("TestApp", {
-                text: 'This is a test app.'
+            mstrmojo.reactBridge.render("TestApp", {
+                text: 'This is a button created by React'
             }, document.getElementById('root'));
         });
     </script>
 </head>
 <body>
-<div id="root"></div>
+    <div id="root"></div>
 </body>
 </html>
