@@ -19,20 +19,20 @@ function _createBridge(render) {
 }
 
 /**
- * Wrap a react functional component as a bridge, so that react components can be rendered in non-react environments.
+ * Wrap a react functional component as a bridge.
  *
  * @param name      {string}                                - unique bridge name
- * @param render    {function(Object): React.ReactElement}  - render function which is basically a functional component
+ * @param component {function(Object): React.ReactElement}  - A react functional component or a render function
  * @returns {function(Object, Node): {destroy: function(): void}}
  */
-function createBridge(name, render) {
+function createBridge(name, component) {
     if (!_.isString(name)) {
         throw new Error('The name parameter should be a string.');
     }
-    if (!_.isFunction(render)) {
+    if (!_.isFunction(component)) {
         throw new Error(`The render parameter should be a function.`);
     }
-    const bridge = _createBridge(render);
+    const bridge = _createBridge(component);
     registry[name] = bridge;
     return bridge;
 }
