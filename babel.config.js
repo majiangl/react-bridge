@@ -7,7 +7,7 @@ module.exports = {
         "modules": false,
         // 按需添加babel-polyfill，减少转码文件大小
         "useBuiltIns": "entry",
-        "corejs": 2
+        "corejs": "3.12"
       }
     ],
     "@babel/preset-react"

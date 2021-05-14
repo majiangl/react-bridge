@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Test Page</title>
-  <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-      reactBridge.getBridge("testBridge").hello();
-    });
-  </script>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            reactBridge.renderBridge("TestApp", {
+                text: 'This is a test app.'
+            }, document.getElementById('root'));
+        });
+    </script>
 </head>
 <body>
 <div id="root"></div>

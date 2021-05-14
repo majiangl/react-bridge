@@ -5,19 +5,19 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 
 module.exports = function (env, argv) {
-  return merge(common, {
-    mode: "production",
-    output: {
-      filename: "js/[name].js"
-    },
-    plugins: [
-      new LodashModuleReplacementPlugin(),
-      // https://github.com/webpack-contrib/webpack-bundle-analyzer
-      new BundleAnalyzerPlugin({
-        analyzerMode: "static",
-        openAnalyzer: false,
-        reportFilename: "bundle-report.html"
-      })
-    ]
-  });
+    return merge(common, {
+        mode: "production",
+        output: {
+            filename: "js/[name].js"
+        },
+        plugins: [
+            new LodashModuleReplacementPlugin(),
+            // https://github.com/webpack-contrib/webpack-bundle-analyzer
+            new BundleAnalyzerPlugin({
+                analyzerMode: "static",
+                openAnalyzer: false,
+                reportFilename: "bundle-report.html"
+            })
+        ]
+    });
 };

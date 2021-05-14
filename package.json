@@ -6,13 +6,13 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.dev.js --env.template=index.html --env.chunks=testBridge"
+    "start": "webpack-dev-server --config webpack.dev.js --env.template=index.html --env.chunks=TestApp"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.9.2",
-    "core-js": "^2.6.11",
+    "core-js": "^3.12.1",
     "lodash": "^4.17.15",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
@@ -31,7 +31,7 @@
     "webpack": "^4.42.1",
     "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
+    "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^4.2.2"
   },
   "browserslist": [
