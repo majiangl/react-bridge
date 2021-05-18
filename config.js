@@ -12,5 +12,5 @@ module.exports = {
     /**
      * define where to expose bridge APIs.
      */
-    bridgeAPINamespace: 'mstrmojo.react'
+    bridgeAPINamespace: 'mstrReact'
 };
