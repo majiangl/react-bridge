@@ -6,7 +6,7 @@ const registry = {};
 const NAME = Symbol("name");
 
 function _createBridge(render) {
-    function renderComponent(props, container, callback) {
+    function renderComponent(props={}, container, callback) {
         ReactDOM.render(render(props), container, callback);
         return {
             destroy: function () {
