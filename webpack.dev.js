@@ -1,4 +1,4 @@
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const common = require("./webpack.common.js");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -10,7 +10,7 @@ module.exports = function (env = {}, argv) {
             hot: true
         },
         // See different source mapping options -> https://webpack.js.org/configuration/devtool/
-        devtool: "eval-cheap-source-map",
+        devtool: "source-map",
         mode: "development",
         plugins: [
             new htmlWebpackPlugin({
