@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBridge} from "src/bridge";
+import {createBridge} from 'src/bridge';
 
 import styles from './_TestApp.scss';
 

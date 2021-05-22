@@ -1,6 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const config = require('./config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -9,7 +8,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "/",
-        filename: "js/[name].js"
+        filename: "js/[name].js",
+        clean: true
     },
     module: {
         rules: [{
@@ -58,7 +58,6 @@ module.exports = {
         }]
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
             "BRIDGE_API_NAMESPACE": JSON.stringify(config.bridgeAPINamespace)
         }),

@@ -1,5 +1,5 @@
 const {merge} = require('webpack-merge');
-const common = require('./webpack.common.js');
+const common = require('./webpack.base.js');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');

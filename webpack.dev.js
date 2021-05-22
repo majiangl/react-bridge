@@ -1,5 +1,5 @@
 const {merge} = require("webpack-merge");
-const common = require("./webpack.common.js");
+const common = require("./webpack.base.js");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = function (env = {}, argv) {
@@ -16,6 +16,8 @@ module.exports = function (env = {}, argv) {
             new htmlWebpackPlugin({
                 template: 'public/index.html'
             })
-        ]
+        ],
+        // Fix HMR not working issue when webpack5 meets browserslist
+        target: 'web'
     });
 };
