@@ -50,7 +50,7 @@ module.exports = function (env = {}, argv) {
                             // number of loaders applied before CSS loader
                             importLoaders: 1,
                             modules: {
-                                localIdentName: '[local]--[hash:base64:5]'
+                                localIdentName: '[local]__[hash:base64:5]'
                             }
                         }
                     },

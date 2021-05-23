@@ -1,12 +1,13 @@
-import _ from "lodash";
+import React from 'react';
 import ReactDOM from 'react-dom';
+import _ from "lodash";
 
 const registry = {};
 const NAME = Symbol("name");
 
-function _createBridge(render) {
+function _createBridge(component) {
     function renderComponent(props={}, container, callback) {
-        ReactDOM.render(render(props), container, callback);
+        ReactDOM.render(React.createElement(component, props), container, callback);
         return {
             destroy: function () {
                 ReactDOM.unmountComponentAtNode(container);
@@ -18,10 +19,10 @@ function _createBridge(render) {
 }
 
 /**
- * Wrap a react functional component as a bridge.
+ * Transform react components to bridges.
  *
- * @param name      {string}                                - unique bridge name
- * @param component {function(Object): React.ReactElement}  - A react functional component or a render function
+ * @param name      {string}    - unique bridge name
+ * @param component {React.Component}  - A react component
  * @returns {function(Object, Node): {destroy: function(): void}}
  */
 function createBridge(name, component) {
@@ -29,7 +30,7 @@ function createBridge(name, component) {
         throw new Error('The name parameter should be a string.');
     }
     if (!_.isFunction(component)) {
-        throw new Error(`The render parameter should be a function.`);
+        throw new Error(`The component parameter should be a function.`);
     }
     const bridge = _createBridge(component);
     registry[name] = bridge;

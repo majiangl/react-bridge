@@ -6,7 +6,7 @@ module.exports = {
      * define js bundles
      */
     bundles: {
-        'reactBridge': ['src/bridges/TestApp.js']
+        'reactBridge': ['src/allBridges.js']
     },
 
     /**
