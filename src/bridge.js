@@ -1,4 +1,3 @@
-import "core-js/stable";
 import _ from "lodash";
 import ReactDOM from 'react-dom';
 
