@@ -10,7 +10,7 @@ module.exports = {
   },
 
   /**
-   * define where to expose bridge APIs.
+   * define global namespace to expose for bridge APIs.
    */
   bridgeAPINamespace: 'mstrReact'
 };
