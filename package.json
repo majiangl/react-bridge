@@ -4,9 +4,9 @@
   "description": "expose react components as bridges and use them in non-react environments",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.dev.js --open"
+    "start": "webpack serve --config webpack.dev.config.js --open"
   },
   "author": "jima@microstrategy.com",
   "license": "ISC",
