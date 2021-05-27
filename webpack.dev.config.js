@@ -36,6 +36,7 @@ module.exports = function () {
             ],
             plugins: [
               '@babel/plugin-transform-runtime',
+              'lodash',
               'react-refresh/babel'
             ]
           }
