@@ -2,21 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 
-const registry = {}
-const NAME = Symbol('name')
+const registry = {};
+const NAME = Symbol('name');
 
 function _createBridge(component) {
   function renderComponent(props = {}, container, callback) {
-    ReactDOM.render(React.createElement(component, props), container, callback)
+    ReactDOM.render(React.createElement(component, props), container, callback);
     return {
       destroy: function () {
-        ReactDOM.unmountComponentAtNode(container)
+        ReactDOM.unmountComponentAtNode(container);
       }
-    }
+    };
   }
 
-  renderComponent[NAME] = name
-  return renderComponent
+  renderComponent[NAME] = name;
+  return renderComponent;
 }
 
 /**
@@ -28,14 +28,14 @@ function _createBridge(component) {
  */
 function createBridge(name, component) {
   if (!_.isString(name)) {
-    throw new Error('The name parameter should be a string.')
+    throw new Error('The name parameter should be a string.');
   }
   if (!_.isFunction(component)) {
-    throw new Error('The component parameter should be a function.')
+    throw new Error('The component parameter should be a function.');
   }
-  const bridge = _createBridge(component)
-  registry[name] = bridge
-  return bridge
+  const bridge = _createBridge(component);
+  registry[name] = bridge;
+  return bridge;
 }
 
 const bridgeAPIs = {
@@ -45,7 +45,7 @@ const bridgeAPIs = {
    * @returns {*}
    */
   getBridge(name) {
-    return registry[name]
+    return registry[name];
   },
   /**
    * Return name of specified bridge
@@ -53,8 +53,8 @@ const bridgeAPIs = {
    * @returns {*}
    */
   getName(bridge) {
-    if (bridge === null || bridge === undefined) return bridge
-    return bridge[NAME]
+    if (bridge === null || bridge === undefined) return bridge;
+    return bridge[NAME];
   },
   /**
    * Render react bridge by specifying name, props and container to render
@@ -65,10 +65,10 @@ const bridgeAPIs = {
    * @returns {function(Object, Node): {destroy: function(): void}}
    */
   render(name, props, container, callback) {
-    const bridge = this.getBridge(name)
-    return bridge(props, container, callback)
+    const bridge = this.getBridge(name);
+    return bridge(props, container, callback);
   }
 }
-_.set(self, BRIDGE_API_NAMESPACE, bridgeAPIs)
+_.set(self, BRIDGE_API_NAMESPACE, bridgeAPIs);
 
-export {createBridge}
+export {createBridge};
